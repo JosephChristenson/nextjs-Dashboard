@@ -108,9 +108,13 @@ export async function GET() {
   });
   try {
     await client.sql`BEGIN`;
+    return Response.json({ message: 'Database begin successfully' });
     await seedUsers();
+    return Response.json({ message: 'Database users seeded successfully' });
     await seedCustomers();
+    return Response.json({ message: 'Database customers seeded successfully' });
     await seedInvoices();
+    return Response.json({ message: 'Database invoices seeded successfully' });
     await seedRevenue();
     await client.sql`COMMIT`;
 
